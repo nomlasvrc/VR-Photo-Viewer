@@ -6,6 +6,48 @@
 <title>vr360 viewer embed samples</title>
 <script src="js/poxp_all.js?20200105"></script>
 <script src="js/v360_embed.js"></script>
+<script type="text/javascript">
+	function setVRpreview(o)
+	{
+		const dsrc = o.getAttribute("data-src")
+		if(!dsrc) return 
+		const sb = document.createElement("div")
+		sb.innerHTML = "<div class=sbtn>▶︎</div>"
+		o.appendChild(sb) ;
+		sb.addEventListener("click", (ev)=>{
+			ev.target.style.display = "none" ;	
+			setpox(o,{src:src,param:[dsrc,o.getAttribute("data-mode")]})
+			document.querySelectorAll('div.poxe').forEach((to)=>{
+				if(to!=o && to.poxp) to.poxp.param.pause = true ;
+			})
+		})
+	}
+	function previewImage(file) {
+	const fileInput = document.getElementById('vr_image');
+	const image_preview = document.getElementById('image_preview');
+	const vr_preview = document.getElementById('vr_preview');
+    if (fileInput.files && fileInput.files[0]) {
+		const reader = new FileReader();
+		reader.onload = ((e) => {
+			image_preview.src = e.target.result;
+			let datamode = document.getElementsByName('data-mode');
+            let len = datamode.length;
+            let checkValue = '';
+
+            for (let i = 0; i < len; i++){
+                if (datamode.item(i).checked){
+                    checkValue = datamode.item(i).value;
+                }
+            }
+			const num = checkValue;
+			vr_preview.setAttribute("data-src", e.target.result);
+			vr_preview.setAttribute("data-mode", num);
+			setVRpreview(vr_preview);
+		});
+		reader.readAsDataURL(fileInput.files[0]);
+	}
+}
+</script>
 <link rel="stylesheet" type="text/css" href="css/v360_embed.css">
 <style type="text/css">
 div.v360 {
@@ -17,6 +59,16 @@ div.v360 {
 <body>
 <h1>vr360 viewer samples</h1>
 click photos to start viewer 
+
+<h2>ローカル画像を表示</h2>
+<input type="file" id="vr_image" accept="image/*" onchange="previewImage()">
+<div class=poxe data-src="" data-mode="3" id="vr_preview" ><img class=thumb src="" id="image_preview"></div>
+<label><input type="radio" name="data-mode" value="0"        >360度Equirectangularフォーマット</label><br>
+<label><input type="radio" name="data-mode" value="1"        >360度Equirectangularを上下に並べたステレオ写真</label><br>
+<label><input type="radio" name="data-mode" value="2" checked>Side by side のVR180 ステレオ写真</label><br>
+<label><input type="radio" name="data-mode" value="3"        >横長パノラマ写真。iPhoneに合わせ縦方向の画角を63度に設定</label><br>
+<label><input type="radio" name="data-mode" value="5"        >Domemaster形式。床を表示して半球ドームに投影</label><br>
+
 <h2>360° Omnidirectional photo </h2>
 <ul>
 	<li><div class=poxe data-src="sample/R0010392.JPG">

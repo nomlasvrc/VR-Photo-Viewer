@@ -24,8 +24,8 @@ v360.html?画像のパス&mode
  - mode=3 : 横長パノラマ写真。iPhoneに合わせ縦方向の画角を63度に設定
  - mode=5 : Domemaster形式。床を表示して半球ドームに投影
 
-具体例はサンプル [index.html](https://wakufactory.github.io/vr360/) を見てください。
+具体例はサンプル [index.html](https://nomlasvrc.github.io/VR-Photo-Viewer/) を見てください。
 
-ページ内にビュアーを埋め込めるembed形式はこちらのサンプルを [v360_embed.html](https://wakufactory.github.io/vr360/v360_embed.html)
+ページ内にビュアーを埋め込めるembed形式はこちらのサンプルを [v360_embed.html](https://nomlasvrc.github.io/VR-Photo-Viewer/v360_embed.html)
 
 

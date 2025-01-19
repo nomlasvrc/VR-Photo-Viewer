@@ -23,7 +23,7 @@ function setpox(base,param) {
  <div class=pui></div></div>
 <div class=loading><img src="img/guruguru.gif"></div>
 <div class=vrbtn></div>
-<div class=footer><a href="https://github.com/wakufactory/vr360/" target="_blank">vr360</a></div>`
+<div class=footer><a href="https://github.com/nomlasvrc/VR-Photo-Viewer/" target="_blank">vr360</a></div>`
 	const div = document.createElement("div")
 	div.innerHTML = p 
 	base.appendChild(div)
